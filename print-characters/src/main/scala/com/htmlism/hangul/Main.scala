@@ -5,14 +5,14 @@ object Main extends App {
   val medialOriginCodePoint  = 0x1161
   val finalOriginCodePoint   = 0x11A8
 
-  val initalConsonants = 19
+  val initialConsonants = 19
   val vowels = 21
   val finalConsonants = 27
 
   // optional final constant makes 28
   // 19 * 21 * 28 = 11,172
 
-  printJamo("Initial consonants", initalConsonants, initialOriginCodePoint)
+  printJamo("Initial consonants", initialConsonants, initialOriginCodePoint)
   printJamo("Vowels", vowels, medialOriginCodePoint)
   printJamo("Final consonants", finalConsonants, finalOriginCodePoint)
 
