@@ -12,27 +12,17 @@ object Main extends App {
   // optional final constant makes 28
   // 19 * 21 * 28 = 11,172
 
-  println("Initial consonants")
+  printJamo("Initial consonants", initalConsonants, initialOriginCodePoint)
+  printJamo("Vowels", vowels, medialOriginCodePoint)
+  printJamo("Final consonants", finalConsonants, finalOriginCodePoint)
 
-  for (i <- 0 until initalConsonants) {
-    val codePoint = initialOriginCodePoint + i
+  private def printJamo(heading: String, number: Int, origin: Int) = {
+    val jamo = (0 until number)
+      .map(_ + origin)
+      .map(_.toChar)
+      .mkString(" ")
 
-    println(codePoint + ": " + codePoint.toChar)
-  }
-
-  println("Vowels")
-
-  for (i <- 0 until vowels) {
-    val codePoint = medialOriginCodePoint + i
-
-    println(codePoint + ": " + codePoint.toChar)
-  }
-
-  println("Final consonants")
-
-  for (i <- 0 until finalConsonants) {
-    val codePoint = finalOriginCodePoint + i
-
-    println(codePoint + ": " + codePoint.toChar)
+    println(heading)
+    println(jamo)
   }
 }
