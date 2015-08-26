@@ -30,3 +30,22 @@ object Main extends App {
     println(jamo)
   }
 }
+
+object TwoCharacterSyllables extends App {
+  import com.htmlism.hangul.Hangul._
+
+  val origin = 0xAC00
+  val consonantJump = finalConsonants + 1
+
+  for (c <- 0 until initialConsonants) {
+    val syllables = (0 until vowels)
+      .map { v => origin +
+        (c * vowels * consonantJump) +
+        (v * consonantJump)
+      }
+      .map(_.toChar)
+      .mkString(" ")
+
+    println(syllables)
+  }
+}
