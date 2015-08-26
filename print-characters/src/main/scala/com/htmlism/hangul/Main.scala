@@ -8,6 +8,8 @@ object Hangul {
   val initialConsonants = 19
   val vowels = 21
   val finalConsonants = 27
+
+  val syllableOrigin = 0xAC00
 }
 
 object Main extends App {
@@ -34,12 +36,11 @@ object Main extends App {
 object TwoCharacterSyllables extends App {
   import com.htmlism.hangul.Hangul._
 
-  val origin = 0xAC00
   val consonantJump = finalConsonants + 1
 
   for (c <- 0 until initialConsonants) {
     val syllables = (0 until vowels)
-      .map { v => origin +
+      .map { v => syllableOrigin +
         (c * vowels * consonantJump) +
         (v * consonantJump)
       }
