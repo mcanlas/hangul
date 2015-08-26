@@ -49,3 +49,22 @@ object TwoCharacterSyllables extends App {
     println(syllables)
   }
 }
+
+object ThreeCharacterSyllables extends App {
+  import com.htmlism.hangul.Hangul._
+
+  for (c <- 0 until initialConsonants) {
+    for (v <- 0 until vowels) {
+      val syllables = (0 until finalConsonantsWithOption)
+        .map { cf => syllableOrigin +
+          (c * vowels * finalConsonantsWithOption) +
+          (v * finalConsonantsWithOption) +
+          cf
+        }
+        .map(_.toChar)
+        .mkString(" ")
+
+      println(syllables)
+    }
+  }
+}
