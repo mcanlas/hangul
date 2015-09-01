@@ -13,6 +13,20 @@ object Hangul {
   val syllableOrigin = 0xAC00
 }
 
+sealed trait UnicodeCharacter
+
+trait Jamo extends UnicodeCharacter {
+  def name: String
+}
+
+sealed trait Syllable extends UnicodeCharacter {
+  def pronunciation: String
+}
+
+trait TwoCharacterSyllable extends Syllable
+
+trait ThreeCharacterSyllable extends Syllable
+
 object Main extends App {
   import com.htmlism.hangul.Hangul._
 
