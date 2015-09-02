@@ -5,7 +5,28 @@ object Hangul {
   val medialOriginCodePoint  = 0x1161
   val finalOriginCodePoint   = 0x11A8
 
-  val initialConsonantsTotal = 19
+  val initalConsonants = Seq(
+    Jamo("g"),
+    Jamo("kk"),
+    Jamo("n"),
+    Jamo("d"),
+    Jamo("tt"),
+    Jamo("r"),
+    Jamo("m"),
+    Jamo("b"),
+    Jamo("pp"),
+    Jamo("s"),
+    Jamo("ss"),
+    Jamo(""),
+    Jamo("j"),
+    Jamo("jj"),
+    Jamo("ch"),
+    Jamo("k"),
+    Jamo("t"),
+    Jamo("p"),
+    Jamo("h"))
+
+  val initialConsonantsTotal = initalConsonants.length // 19
   val vowelsTotal = 21
   val finalConsonantsTotal = 27
   val finalConsonantsWithOptionTotal = 28
@@ -15,9 +36,7 @@ object Hangul {
 
 sealed trait UnicodeCharacter
 
-trait Jamo extends UnicodeCharacter {
-  def name: String
-}
+case class Jamo(romanization: String) extends UnicodeCharacter
 
 sealed trait Syllable extends UnicodeCharacter {
   def pronunciation: String
