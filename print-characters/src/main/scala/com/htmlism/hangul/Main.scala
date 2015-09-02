@@ -41,7 +41,7 @@ object Main extends App {
     val jamo = (0 until number)
       .map(_ + origin)
       .map(_.toChar)
-      .mkString(" ")
+      .mkString("  ")
 
     println(heading)
     println(jamo)
