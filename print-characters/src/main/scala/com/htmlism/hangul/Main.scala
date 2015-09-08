@@ -26,8 +26,31 @@ object Hangul {
     InitialConsonant("p"),
     InitialConsonant("h"))
 
+  val vowels = Seq(
+    Vowel("a"),
+    Vowel("ae"),
+    Vowel("ya"),
+    Vowel("yae"),
+    Vowel("eo"),
+    Vowel("e"),
+    Vowel("yeo"),
+    Vowel("ye"),
+    Vowel("o"),
+    Vowel("wa"),
+    Vowel("wae"),
+    Vowel("oe"),
+    Vowel("yo"),
+    Vowel("u"),
+    Vowel("weo"),
+    Vowel("we"),
+    Vowel("wi"),
+    Vowel("yu"),
+    Vowel("eu"),
+    Vowel("ui"),
+    Vowel("i"))
+
   val initialConsonantsTotal = initalConsonants.length // 19
-  val vowelsTotal = 21
+  val vowelsTotal = vowels.length
   val finalConsonantsTotal = 27
   val finalConsonantsWithOptionTotal = 28
 
