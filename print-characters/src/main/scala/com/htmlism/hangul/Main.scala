@@ -6,25 +6,25 @@ object Hangul {
   val finalOriginCodePoint   = 0x11A8
 
   val initalConsonants = Seq(
-    Jamo("g"),
-    Jamo("kk"),
-    Jamo("n"),
-    Jamo("d"),
-    Jamo("tt"),
-    Jamo("r"),
-    Jamo("m"),
-    Jamo("b"),
-    Jamo("pp"),
-    Jamo("s"),
-    Jamo("ss"),
-    Jamo(""),
-    Jamo("j"),
-    Jamo("jj"),
-    Jamo("ch"),
-    Jamo("k"),
-    Jamo("t"),
-    Jamo("p"),
-    Jamo("h"))
+    InitialConsonant("g"),
+    InitialConsonant("kk"),
+    InitialConsonant("n"),
+    InitialConsonant("d"),
+    InitialConsonant("tt"),
+    InitialConsonant("r"),
+    InitialConsonant("m"),
+    InitialConsonant("b"),
+    InitialConsonant("pp"),
+    InitialConsonant("s"),
+    InitialConsonant("ss"),
+    InitialConsonant(""),
+    InitialConsonant("j"),
+    InitialConsonant("jj"),
+    InitialConsonant("ch"),
+    InitialConsonant("k"),
+    InitialConsonant("t"),
+    InitialConsonant("p"),
+    InitialConsonant("h"))
 
   val initialConsonantsTotal = initalConsonants.length // 19
   val vowelsTotal = 21
@@ -36,7 +36,15 @@ object Hangul {
 
 sealed trait UnicodeCharacter
 
-case class Jamo(romanization: String) extends UnicodeCharacter
+sealed trait Jamo extends UnicodeCharacter {
+  def romanization: String
+}
+
+case class InitialConsonant(romanization: String) extends Jamo
+
+case class Vowel(romanization: String) extends Jamo
+
+case class FinalConsonant(romanization: String) extends Jamo
 
 sealed trait Syllable extends UnicodeCharacter {
   def pronunciation: String
