@@ -70,9 +70,7 @@ sealed trait Vowel extends Jamo
 
 sealed trait FinalConsonant extends Jamo
 
-sealed trait Syllable extends UnicodeCharacter {
-  def pronunciation: String
-}
+sealed trait Syllable extends UnicodeCharacter
 
 trait TwoCharacterSyllable extends Syllable
 
