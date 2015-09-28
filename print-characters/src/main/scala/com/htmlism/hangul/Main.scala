@@ -56,6 +56,7 @@ object Hangul {
 
   assert(initialConsonantsTotal == 19)
   assert(vowelsTotal == 21)
+  assert(finalConsonantsTotal == 27)
 
   val syllableOrigin = 0xAC00
 }
@@ -63,18 +64,27 @@ object Hangul {
 sealed trait UnicodeCharacter
 
 sealed trait Jamo extends UnicodeCharacter
-
 sealed trait InitialConsonant extends Jamo
-
 sealed trait Vowel extends Jamo
 
 sealed trait FinalConsonant extends Jamo
+trait SimpleFinalConsonant extends FinalConsonant
 
-sealed trait Syllable extends UnicodeCharacter
+trait CompoundFinalConsonant extends FinalConsonant {
+  def first: SimpleFinalConsonant
+  def second: SimpleFinalConsonant
+}
+
+sealed trait Syllable extends {
+  def inital: InitialConsonant
+  def medial: Vowel
+}
 
 trait TwoCharacterSyllable extends Syllable
 
-trait ThreeCharacterSyllable extends Syllable
+trait ThreeCharacterSyllable extends Syllable {
+  def `final`: FinalConsonant
+}
 
 object Main extends App {
   import com.htmlism.hangul.Hangul._
@@ -132,25 +142,25 @@ object ThreeCharacterSyllables extends App {
   }
 }
 
-case object Kiyeok      extends InitialConsonant
-case object SsangKiyeok extends InitialConsonant
-case object Nieun       extends InitialConsonant
-case object Tikeut      extends InitialConsonant
+case object Kiyeok      extends InitialConsonant with SimpleFinalConsonant
+case object SsangKiyeok extends InitialConsonant with SimpleFinalConsonant
+case object Nieun       extends InitialConsonant with SimpleFinalConsonant
+case object Tikeut      extends InitialConsonant with SimpleFinalConsonant
 case object SsangTikeut extends InitialConsonant
-case object Rieul       extends InitialConsonant
-case object Mieum       extends InitialConsonant
-case object Pieup       extends InitialConsonant
+case object Rieul       extends InitialConsonant with SimpleFinalConsonant
+case object Mieum       extends InitialConsonant with SimpleFinalConsonant
+case object Pieup       extends InitialConsonant with SimpleFinalConsonant
 case object SsangPieup  extends InitialConsonant
-case object Sios        extends InitialConsonant
-case object SsangSios   extends InitialConsonant
-case object Ieung       extends InitialConsonant
-case object Cieuc       extends InitialConsonant
+case object Sios        extends InitialConsonant with SimpleFinalConsonant
+case object SsangSios   extends InitialConsonant with SimpleFinalConsonant
+case object Ieung       extends InitialConsonant with SimpleFinalConsonant
+case object Cieuc       extends InitialConsonant with SimpleFinalConsonant
 case object SsangCieuc  extends InitialConsonant
-case object Chiuech     extends InitialConsonant
-case object Khieukh     extends InitialConsonant
-case object Thieuth     extends InitialConsonant
-case object Phieuph     extends InitialConsonant
-case object Hieuh       extends InitialConsonant
+case object Chiuech     extends InitialConsonant with SimpleFinalConsonant
+case object Khieukh     extends InitialConsonant with SimpleFinalConsonant
+case object Thieuth     extends InitialConsonant with SimpleFinalConsonant
+case object Phieuph     extends InitialConsonant with SimpleFinalConsonant
+case object Hieuh       extends InitialConsonant with SimpleFinalConsonant
 
 case object VowelA   extends Vowel
 case object VowelAe  extends Vowel
@@ -173,3 +183,17 @@ case object VowelYu  extends Vowel
 case object VowelEu  extends Vowel
 case object VowelYi  extends Vowel
 case object VowelI   extends Vowel
+
+class CompoundFinalConsonantValue(val first: SimpleFinalConsonant, val second: SimpleFinalConsonant) extends CompoundFinalConsonant
+
+case object KiyeokSios  extends CompoundFinalConsonantValue(Kiyeok, Sios)
+case object NieunCieuc  extends CompoundFinalConsonantValue(Nieun,  Cieuc)
+case object NieunHieuh  extends CompoundFinalConsonantValue(Nieun,  Hieuh)
+case object RieulKiyeok extends CompoundFinalConsonantValue(Rieul,  Kiyeok)
+case object RieulMieum  extends CompoundFinalConsonantValue(Rieul,  Mieum)
+case object RieulPieup  extends CompoundFinalConsonantValue(Rieul,  Pieup)
+case object RieulSios   extends CompoundFinalConsonantValue(Rieul,  Sios)
+case object RieulThieth extends CompoundFinalConsonantValue(Rieul,  Thieuth)
+case object RieulPhieph extends CompoundFinalConsonantValue(Rieul,  Phieuph)
+case object RieulHieuh  extends CompoundFinalConsonantValue(Rieul,  Hieuh)
+case object PiuepSios   extends CompoundFinalConsonantValue(Pieup,  Sios)
