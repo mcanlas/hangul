@@ -49,10 +49,39 @@ object Hangul {
     VowelYi,
     VowelI)
 
+  val finalConsonants = Seq(
+    Kiyeok,
+    SsangKiyeok,
+    KiyeokSios,
+    Nieun,
+    NieunCieuc,
+    NieunHieuh,
+    Tikeut,
+    Rieul,
+    RieulKiyeok,
+    RieulMieum,
+    RieulPieup,
+    RieulSios,
+    RieulThieth,
+    RieulPhieph,
+    RieulHieuh,
+    Mieum,
+    Pieup,
+    PiuepSios,
+    Sios,
+    SsangSios,
+    Ieung,
+    Cieuc,
+    Chiuech,
+    Khieukh,
+    Thieuth,
+    Phieuph,
+    Hieuh)
+
   val initialConsonantsTotal = initalConsonants.length
   val vowelsTotal = vowels.length
-  val finalConsonantsTotal = 27
-  val finalConsonantsWithOptionTotal = 28
+  val finalConsonantsTotal = finalConsonants.length
+  val finalConsonantsWithOptionTotal = finalConsonants.length + 1
 
   assert(initialConsonantsTotal == 19)
   assert(vowelsTotal == 21)
