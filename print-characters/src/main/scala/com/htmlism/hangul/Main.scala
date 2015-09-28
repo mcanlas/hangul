@@ -90,19 +90,6 @@ object Hangul {
   val syllableOrigin = 0xAC00
 }
 
-sealed trait UnicodeCharacter
-
-sealed trait Syllable extends {
-  def inital: InitialConsonant
-  def medial: Vowel
-}
-
-trait TwoCharacterSyllable extends Syllable
-
-trait ThreeCharacterSyllable extends Syllable {
-  def `final`: FinalConsonant
-}
-
 object Main extends App {
   import com.htmlism.hangul.Hangul._
 
