@@ -23,6 +23,9 @@ trait ConsonantCluster extends FinalConsonant {
 
 class ConsonantClusterValue(val first: SimpleFinalConsonant, val second: SimpleFinalConsonant) extends ConsonantCluster
 
+class LeftCluster(first: SimpleFinalConsonant, second: SimpleFinalConsonant) extends ConsonantClusterValue(first, second)
+class RightCluster(first: SimpleFinalConsonant, second: SimpleFinalConsonant) extends ConsonantClusterValue(first, second)
+
 case object Kiyeok      extends InitialConsonant with SimpleFinalConsonant
 case object SsangKiyeok extends InitialConsonant with SimpleFinalConsonant
 case object Nieun       extends InitialConsonant with SimpleFinalConsonant
@@ -65,14 +68,14 @@ case object VowelEu  extends SimpleVowel
 case object VowelYi  extends CompoundVowel(VowelEu, VowelI)
 case object VowelI   extends SimpleVowel
 
-case object KiyeokSios  extends ConsonantClusterValue(Kiyeok, Sios)
-case object NieunCieuc  extends ConsonantClusterValue(Nieun, Cieuc)
-case object NieunHieuh  extends ConsonantClusterValue(Nieun, Hieuh)
-case object RieulKiyeok extends ConsonantClusterValue(Rieul, Kiyeok)
-case object RieulMieum  extends ConsonantClusterValue(Rieul, Mieum)
-case object RieulPieup  extends ConsonantClusterValue(Rieul, Pieup)
+case object KiyeokSios  extends LeftCluster(Kiyeok, Sios)
+case object NieunCieuc  extends LeftCluster(Nieun, Cieuc)
+case object NieunHieuh  extends LeftCluster(Nieun, Hieuh)
+case object RieulKiyeok extends RightCluster(Rieul, Kiyeok)
+case object RieulMieum  extends RightCluster(Rieul, Mieum)
+case object RieulPieup  extends RightCluster(Rieul, Pieup)
 case object RieulSios   extends ConsonantClusterValue(Rieul, Sios)
 case object RieulThieth extends ConsonantClusterValue(Rieul, Thieuth)
 case object RieulPhieph extends ConsonantClusterValue(Rieul, Phieuph)
-case object RieulHieuh  extends ConsonantClusterValue(Rieul, Hieuh)
-case object PiuepSios   extends ConsonantClusterValue(Pieup, Sios)
+case object RieulHieuh  extends LeftCluster(Rieul, Hieuh)
+case object PiuepSios   extends LeftCluster(Pieup, Sios)
