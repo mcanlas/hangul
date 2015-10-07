@@ -6,6 +6,12 @@ sealed trait InitialConsonant extends Jamo
 
 sealed trait Vowel extends Jamo
 
+sealed trait SimpleVowel extends Vowel
+
+abstract class CompoundVowel(first: Vowel, second: Vowel) extends Vowel
+
+abstract class IotizedVowel(from: Vowel) extends Vowel
+
 sealed trait FinalConsonant extends Jamo
 
 trait SimpleFinalConsonant extends FinalConsonant
@@ -37,27 +43,27 @@ case object Thieuth     extends InitialConsonant with SimpleFinalConsonant
 case object Phieuph     extends InitialConsonant with SimpleFinalConsonant
 case object Hieuh       extends InitialConsonant with SimpleFinalConsonant
 
-case object VowelA   extends Vowel
-case object VowelAe  extends Vowel
-case object VowelYa  extends Vowel
-case object VowelYae extends Vowel
-case object VowelEo  extends Vowel
-case object VowelE   extends Vowel
-case object VowelYeo extends Vowel
-case object VowelYe  extends Vowel
-case object VowelO   extends Vowel
-case object VowelWa  extends Vowel
-case object VowelWae extends Vowel
-case object VowelOe  extends Vowel
-case object VowelYo  extends Vowel
-case object VowelU   extends Vowel
-case object VowelWeo extends Vowel
-case object VowelWe  extends Vowel
-case object VowelWi  extends Vowel
-case object VowelYu  extends Vowel
-case object VowelEu  extends Vowel
-case object VowelYi  extends Vowel
-case object VowelI   extends Vowel
+case object VowelA   extends SimpleVowel
+case object VowelAe  extends SimpleVowel
+case object VowelYa  extends IotizedVowel(VowelA)
+case object VowelYae extends IotizedVowel(VowelAe)
+case object VowelEo  extends SimpleVowel
+case object VowelE   extends SimpleVowel
+case object VowelYeo extends IotizedVowel(VowelEo)
+case object VowelYe  extends IotizedVowel(VowelYe)
+case object VowelO   extends SimpleVowel
+case object VowelWa  extends CompoundVowel(VowelO, VowelA)
+case object VowelWae extends CompoundVowel(VowelO, VowelAe)
+case object VowelOe  extends CompoundVowel(VowelO, VowelI)
+case object VowelYo  extends IotizedVowel(VowelO)
+case object VowelU   extends SimpleVowel
+case object VowelWeo extends CompoundVowel(VowelU, VowelEo)
+case object VowelWe  extends CompoundVowel(VowelU, VowelE)
+case object VowelWi  extends CompoundVowel(VowelU, VowelI)
+case object VowelYu  extends IotizedVowel(VowelU)
+case object VowelEu  extends SimpleVowel
+case object VowelYi  extends CompoundVowel(VowelEu, VowelI)
+case object VowelI   extends SimpleVowel
 
 case object KiyeokSios  extends CompoundConsonantValue(Kiyeok, Sios)
 case object NieunCieuc  extends CompoundConsonantValue(Nieun, Cieuc)
