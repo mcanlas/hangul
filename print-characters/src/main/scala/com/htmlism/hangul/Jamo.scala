@@ -16,12 +16,12 @@ sealed trait FinalConsonant extends Jamo
 
 trait SimpleFinalConsonant extends FinalConsonant
 
-trait CompoundConsonant extends FinalConsonant {
+trait ConsonantCluster extends FinalConsonant {
   def first: SimpleFinalConsonant
   def second: SimpleFinalConsonant
 }
 
-class CompoundConsonantValue(val first: SimpleFinalConsonant, val second: SimpleFinalConsonant) extends CompoundConsonant
+class ConsonantClusterValue(val first: SimpleFinalConsonant, val second: SimpleFinalConsonant) extends ConsonantCluster
 
 case object Kiyeok      extends InitialConsonant with SimpleFinalConsonant
 case object SsangKiyeok extends InitialConsonant with SimpleFinalConsonant
@@ -50,7 +50,7 @@ case object VowelYae extends IotizedVowel(VowelAe)
 case object VowelEo  extends SimpleVowel
 case object VowelE   extends SimpleVowel
 case object VowelYeo extends IotizedVowel(VowelEo)
-case object VowelYe  extends IotizedVowel(VowelYe)
+case object VowelYe  extends IotizedVowel(VowelE)
 case object VowelO   extends SimpleVowel
 case object VowelWa  extends CompoundVowel(VowelO, VowelA)
 case object VowelWae extends CompoundVowel(VowelO, VowelAe)
@@ -65,14 +65,14 @@ case object VowelEu  extends SimpleVowel
 case object VowelYi  extends CompoundVowel(VowelEu, VowelI)
 case object VowelI   extends SimpleVowel
 
-case object KiyeokSios  extends CompoundConsonantValue(Kiyeok, Sios)
-case object NieunCieuc  extends CompoundConsonantValue(Nieun, Cieuc)
-case object NieunHieuh  extends CompoundConsonantValue(Nieun, Hieuh)
-case object RieulKiyeok extends CompoundConsonantValue(Rieul, Kiyeok)
-case object RieulMieum  extends CompoundConsonantValue(Rieul, Mieum)
-case object RieulPieup  extends CompoundConsonantValue(Rieul, Pieup)
-case object RieulSios   extends CompoundConsonantValue(Rieul, Sios)
-case object RieulThieth extends CompoundConsonantValue(Rieul, Thieuth)
-case object RieulPhieph extends CompoundConsonantValue(Rieul, Phieuph)
-case object RieulHieuh  extends CompoundConsonantValue(Rieul, Hieuh)
-case object PiuepSios   extends CompoundConsonantValue(Pieup, Sios)
+case object KiyeokSios  extends ConsonantClusterValue(Kiyeok, Sios)
+case object NieunCieuc  extends ConsonantClusterValue(Nieun, Cieuc)
+case object NieunHieuh  extends ConsonantClusterValue(Nieun, Hieuh)
+case object RieulKiyeok extends ConsonantClusterValue(Rieul, Kiyeok)
+case object RieulMieum  extends ConsonantClusterValue(Rieul, Mieum)
+case object RieulPieup  extends ConsonantClusterValue(Rieul, Pieup)
+case object RieulSios   extends ConsonantClusterValue(Rieul, Sios)
+case object RieulThieth extends ConsonantClusterValue(Rieul, Thieuth)
+case object RieulPhieph extends ConsonantClusterValue(Rieul, Phieuph)
+case object RieulHieuh  extends ConsonantClusterValue(Rieul, Hieuh)
+case object PiuepSios   extends ConsonantClusterValue(Pieup, Sios)
