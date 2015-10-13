@@ -87,5 +87,13 @@ object Hangul {
   assert(vowelsTotal == 21)
   assert(finalConsonantsTotal == 27)
 
+  val totalCombinations = initialConsonantsTotal * vowelsTotal * finalConsonantsWithOptionTotal
+
   val syllableOrigin = 0xAC00
+
+  def toSyllable(char: Char): Option[Syllable] =
+    if (char < syllableOrigin || char >=  syllableOrigin + totalCombinations)
+      None
+    else
+      ???
 }
