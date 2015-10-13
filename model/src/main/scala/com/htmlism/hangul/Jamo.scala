@@ -14,37 +14,37 @@ abstract class IotizedVowel(from: BasicVowel) extends Vowel
 
 sealed trait FinalConsonant extends Jamo
 
-trait SimpleFinalConsonant extends FinalConsonant
+trait BasicFinalConsonant extends FinalConsonant
 
 trait ConsonantCluster extends FinalConsonant {
-  def first: SimpleFinalConsonant
-  def second: SimpleFinalConsonant
+  def first: BasicFinalConsonant
+  def second: BasicFinalConsonant
 }
 
-class ConsonantClusterValue(val first: SimpleFinalConsonant, val second: SimpleFinalConsonant) extends ConsonantCluster
+class ConsonantClusterValue(val first: BasicFinalConsonant, val second: BasicFinalConsonant) extends ConsonantCluster
 
-class LeftCluster(first: SimpleFinalConsonant, second: SimpleFinalConsonant) extends ConsonantClusterValue(first, second)
-class RightCluster(first: SimpleFinalConsonant, second: SimpleFinalConsonant) extends ConsonantClusterValue(first, second)
+class LeftCluster(first: BasicFinalConsonant, second: BasicFinalConsonant) extends ConsonantClusterValue(first, second)
+class RightCluster(first: BasicFinalConsonant, second: BasicFinalConsonant) extends ConsonantClusterValue(first, second)
 
-case object Kiyeok      extends InitialConsonant with SimpleFinalConsonant
-case object SsangKiyeok extends InitialConsonant with SimpleFinalConsonant
-case object Nieun       extends InitialConsonant with SimpleFinalConsonant
-case object Tikeut      extends InitialConsonant with SimpleFinalConsonant
+case object Kiyeok      extends InitialConsonant with BasicFinalConsonant
+case object SsangKiyeok extends InitialConsonant with BasicFinalConsonant
+case object Nieun       extends InitialConsonant with BasicFinalConsonant
+case object Tikeut      extends InitialConsonant with BasicFinalConsonant
 case object SsangTikeut extends InitialConsonant
-case object Rieul       extends InitialConsonant with SimpleFinalConsonant
-case object Mieum       extends InitialConsonant with SimpleFinalConsonant
-case object Pieup       extends InitialConsonant with SimpleFinalConsonant
+case object Rieul       extends InitialConsonant with BasicFinalConsonant
+case object Mieum       extends InitialConsonant with BasicFinalConsonant
+case object Pieup       extends InitialConsonant with BasicFinalConsonant
 case object SsangPieup  extends InitialConsonant
-case object Sios        extends InitialConsonant with SimpleFinalConsonant
-case object SsangSios   extends InitialConsonant with SimpleFinalConsonant
-case object Ieung       extends InitialConsonant with SimpleFinalConsonant
-case object Cieuc       extends InitialConsonant with SimpleFinalConsonant
+case object Sios        extends InitialConsonant with BasicFinalConsonant
+case object SsangSios   extends InitialConsonant with BasicFinalConsonant
+case object Ieung       extends InitialConsonant with BasicFinalConsonant
+case object Cieuc       extends InitialConsonant with BasicFinalConsonant
 case object SsangCieuc  extends InitialConsonant
-case object Chiuech     extends InitialConsonant with SimpleFinalConsonant
-case object Khieukh     extends InitialConsonant with SimpleFinalConsonant
-case object Thieuth     extends InitialConsonant with SimpleFinalConsonant
-case object Phieuph     extends InitialConsonant with SimpleFinalConsonant
-case object Hieuh       extends InitialConsonant with SimpleFinalConsonant
+case object Chiuech     extends InitialConsonant with BasicFinalConsonant
+case object Khieukh     extends InitialConsonant with BasicFinalConsonant
+case object Thieuth     extends InitialConsonant with BasicFinalConsonant
+case object Phieuph     extends InitialConsonant with BasicFinalConsonant
+case object Hieuh       extends InitialConsonant with BasicFinalConsonant
 
 case object VowelA   extends BasicVowel
 case object VowelAe  extends BasicVowel
