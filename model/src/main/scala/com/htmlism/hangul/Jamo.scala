@@ -8,9 +8,9 @@ sealed trait Vowel extends Jamo
 
 sealed trait SimpleVowel extends Vowel
 
-abstract class CompoundVowel(first: Vowel, second: Vowel) extends Vowel
+abstract class CompoundVowel(first: SimpleVowel, second: SimpleVowel) extends Vowel
 
-abstract class IotizedVowel(from: Vowel) extends Vowel
+abstract class IotizedVowel(from: SimpleVowel) extends Vowel
 
 sealed trait FinalConsonant extends Jamo
 
