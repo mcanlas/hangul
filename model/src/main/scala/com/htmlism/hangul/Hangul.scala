@@ -5,7 +5,7 @@ object Hangul {
   val medialOriginCodePoint  = 0x1161
   val finalOriginCodePoint   = 0x11A8
 
-  val initalConsonants = Seq(
+  val initialConsonants = Seq(
     Kiyeok,
     SsangKiyeok,
     Nieun,
@@ -83,7 +83,7 @@ object Hangul {
   val finalConsonantsTotal = 27
   val finalConsonantsWithOptionTotal = finalConsonants.length + 1
 
-  assert(initialConsonantsTotal == initalConsonants.length)
+  assert(initialConsonantsTotal == initialConsonants.length)
   assert(vowelsTotal == vowels.length)
   assert(finalConsonantsTotal == finalConsonants.length)
 
