@@ -1,7 +1,7 @@
 package com.htmlism.hangul
 
 sealed trait Syllable {
-  def inital: InitialConsonant
+  def initial: InitialConsonant
   def medial: Vowel
 }
 
