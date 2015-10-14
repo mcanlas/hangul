@@ -78,14 +78,14 @@ object Hangul {
     Phieuph,
     Hieuh)
 
-  val initialConsonantsTotal = initalConsonants.length
-  val vowelsTotal = vowels.length
-  val finalConsonantsTotal = finalConsonants.length
+  val initialConsonantsTotal = 19
+  val vowelsTotal = 21
+  val finalConsonantsTotal = 27
   val finalConsonantsWithOptionTotal = finalConsonants.length + 1
 
-  assert(initialConsonantsTotal == 19)
-  assert(vowelsTotal == 21)
-  assert(finalConsonantsTotal == 27)
+  assert(initialConsonantsTotal == initalConsonants.length)
+  assert(vowelsTotal == vowels.length)
+  assert(finalConsonantsTotal == finalConsonants.length)
 
   val totalCombinations = initialConsonantsTotal * vowelsTotal * finalConsonantsWithOptionTotal
 
