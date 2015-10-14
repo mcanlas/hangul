@@ -94,6 +94,24 @@ object Hangul {
   def toSyllable(char: Char): Option[Syllable] =
     if (char < syllableOrigin || char >=  syllableOrigin + totalCombinations)
       None
-    else
-      ???
+    else {
+      val syllableIndex = char - syllableOrigin
+
+      val finalIndex = syllableIndex / (initialConsonantsTotal * vowelsTotal)
+      val medialIndex = (syllableIndex - (initialConsonantsTotal * vowelsTotal * finalIndex)) / initialConsonantsTotal
+      val initialIndex = syllableIndex -
+        (initialConsonantsTotal * vowelsTotal * finalIndex) -
+        (initialConsonantsTotal * medialIndex)
+
+      val initial = initialConsonants(initialIndex)
+      val medial = vowels(medialIndex)
+
+      if (finalIndex == 0)
+        Some(TwoCharacterSyllable(initial, medial))
+      else {
+        val finalConsonant = finalConsonants(finalIndex - 1)
+
+        Some(ThreeCharacterSyllable(initial, medial, finalConsonant))
+      }
+    }
 }
