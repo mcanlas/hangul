@@ -97,11 +97,11 @@ object Hangul {
     else {
       val syllableIndex = char - syllableOrigin
 
-      val finalIndex = syllableIndex / (initialConsonantsTotal * vowelsTotal)
-      val medialIndex = (syllableIndex - (initialConsonantsTotal * vowelsTotal * finalIndex)) / initialConsonantsTotal
-      val initialIndex = syllableIndex -
-        (initialConsonantsTotal * vowelsTotal * finalIndex) -
-        (initialConsonantsTotal * medialIndex)
+      val initialIndex = syllableIndex / (vowelsTotal * finalConsonantsWithOptionTotal)
+      val remainingVowelBatchim = syllableIndex - (initialIndex * vowelsTotal * finalConsonantsWithOptionTotal)
+
+      val medialIndex = remainingVowelBatchim / finalConsonantsWithOptionTotal
+      val finalIndex = remainingVowelBatchim - medialIndex * finalConsonantsWithOptionTotal
 
       val initial = initialConsonants(initialIndex)
       val medial = vowels(medialIndex)
