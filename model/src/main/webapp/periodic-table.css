@@ -1,0 +1,49 @@
+#consonants, #vowels {
+	margin: 0px auto;
+}
+
+#consonants {
+	background-color: #FFD6BA;
+}
+
+#vowels {
+	margin-top: 50px;
+	background-color: #BEE3DB;
+}
+
+.consonant-cell, .vowel-cell {
+	border: 1px solid rgba(0, 0, 0, .2);
+	height: 120px;
+	width: 120px;
+	position: relative;
+	overflow: hidden;
+}
+
+.consonant-sort, .vowel-sort {
+	position: absolute;
+	top: .3em;
+	left: .3em;
+}
+
+.consonant-name {
+	text-align: center;
+	position: relative;
+	top: -1em;
+/*	font-size: 1.1em;*/
+}
+
+.consonant-character, .vowel-character {
+	font-size: 5em;
+	text-align: center;
+	position: relative;
+}
+
+.vowel-character {
+	top: .2em;
+}
+
+th {
+	color: rgba(0, 0, 0, .25);
+	font-size: 2em;
+	padding: .5em;
+}
