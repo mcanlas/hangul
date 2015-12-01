@@ -21,7 +21,7 @@ trait ConsonantCluster extends FinalConsonant {
   def second: BasicFinalConsonant
 }
 
-class ConsonantClusterValue(val first: BasicFinalConsonant, val second: BasicFinalConsonant) extends ConsonantCluster
+abstract class ConsonantClusterValue(val first: BasicFinalConsonant, val second: BasicFinalConsonant) extends ConsonantCluster
 
 class LeftCluster(first: BasicFinalConsonant, second: BasicFinalConsonant) extends ConsonantClusterValue(first, second)
 class RightCluster(first: BasicFinalConsonant, second: BasicFinalConsonant) extends ConsonantClusterValue(first, second)
@@ -73,9 +73,9 @@ case object NieunCieuc  extends LeftCluster(Nieun, Cieuc)
 case object NieunHieuh  extends LeftCluster(Nieun, Hieuh)
 case object RieulKiyeok extends RightCluster(Rieul, Kiyeok)
 case object RieulMieum  extends RightCluster(Rieul, Mieum)
-case object RieulPieup  extends RightCluster(Rieul, Pieup)
-case object RieulSios   extends ConsonantClusterValue(Rieul, Sios)
-case object RieulThieth extends ConsonantClusterValue(Rieul, Thieuth)
-case object RieulPhieph extends ConsonantClusterValue(Rieul, Phieuph)
+case object RieulPieup  extends LeftCluster(Rieul, Pieup)
+case object RieulSios   extends LeftCluster(Rieul, Sios)
+case object RieulThieth extends LeftCluster(Rieul, Thieuth)
+case object RieulPhieph extends LeftCluster(Rieul, Phieuph)
 case object RieulHieuh  extends LeftCluster(Rieul, Hieuh)
 case object PiuepSios   extends LeftCluster(Pieup, Sios)
