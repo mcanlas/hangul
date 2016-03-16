@@ -4,6 +4,6 @@ name := "hangul-model"
 
 organization := "com.htmlism"
 
-libraryDependencies += "org.specs2" %% "specs2-core" % "3.6.4" % "test"
+libraryDependencies += "org.specs2" %% "specs2-core" % "3.7.2" % "test"
 
 initialCommands in console := "import com.htmlism.hangul._"
