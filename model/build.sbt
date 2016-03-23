@@ -1,4 +1,4 @@
-scalaVersion := "2.11.7"
+scalaVersion := twoEleven
 
 name := "hangul-model"
 

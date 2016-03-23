@@ -1,3 +1,3 @@
-scalaVersion := "2.11.7"
+scalaVersion := twoEleven
 
 name := "print-characters"
