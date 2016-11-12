@@ -16,15 +16,16 @@ sealed trait FinalConsonant extends Jamo
 
 sealed trait BasicFinalConsonant extends FinalConsonant
 
-trait ConsonantCluster extends FinalConsonant {
-  def first: BasicFinalConsonant
-  def second: BasicFinalConsonant
+sealed trait ConsonantCluster extends FinalConsonant {
+  def left: BasicFinalConsonant
+  def right: BasicFinalConsonant
 }
 
-abstract class ConsonantClusterValue(val first: BasicFinalConsonant, val second: BasicFinalConsonant) extends ConsonantCluster
+// these two classes cannot be case classes since they are to be extended by case objects
+// and scala cannot support case to case inheritance
 
-class LeftCluster(first: BasicFinalConsonant, second: BasicFinalConsonant) extends ConsonantClusterValue(first, second)
-class RightCluster(first: BasicFinalConsonant, second: BasicFinalConsonant) extends ConsonantClusterValue(first, second)
+sealed class LeftBiasCluster(val left: BasicFinalConsonant, val right: BasicFinalConsonant) extends ConsonantCluster
+sealed class RightBiasCluster(val left: BasicFinalConsonant, val right: BasicFinalConsonant) extends ConsonantCluster
 
 case object Kiyeok      extends InitialConsonant with BasicFinalConsonant
 case object SsangKiyeok extends InitialConsonant with BasicFinalConsonant
@@ -68,14 +69,14 @@ case object VowelEu  extends BasicVowel
 case object VowelYi  extends CompoundVowel(VowelEu, VowelI)
 case object VowelI   extends BasicVowel
 
-case object KiyeokSios  extends LeftCluster(Kiyeok, Sios)
-case object NieunCieuc  extends LeftCluster(Nieun, Cieuc)
-case object NieunHieuh  extends LeftCluster(Nieun, Hieuh)
-case object RieulKiyeok extends RightCluster(Rieul, Kiyeok)
-case object RieulMieum  extends RightCluster(Rieul, Mieum)
-case object RieulPieup  extends LeftCluster(Rieul, Pieup)
-case object RieulSios   extends LeftCluster(Rieul, Sios)
-case object RieulThieth extends LeftCluster(Rieul, Thieuth)
-case object RieulPhieph extends LeftCluster(Rieul, Phieuph)
-case object RieulHieuh  extends LeftCluster(Rieul, Hieuh)
-case object PiuepSios   extends LeftCluster(Pieup, Sios)
+case object KiyeokSios  extends LeftBiasCluster(Kiyeok, Sios)
+case object NieunCieuc  extends LeftBiasCluster(Nieun, Cieuc)
+case object NieunHieuh  extends LeftBiasCluster(Nieun, Hieuh)
+case object RieulKiyeok extends RightBiasCluster(Rieul, Kiyeok)
+case object RieulMieum  extends RightBiasCluster(Rieul, Mieum)
+case object RieulPieup  extends LeftBiasCluster(Rieul, Pieup)
+case object RieulSios   extends LeftBiasCluster(Rieul, Sios)
+case object RieulThieth extends LeftBiasCluster(Rieul, Thieuth)
+case object RieulPhieph extends LeftBiasCluster(Rieul, Phieuph)
+case object RieulHieuh  extends LeftBiasCluster(Rieul, Hieuh)
+case object PiuepSios   extends LeftBiasCluster(Pieup, Sios)
