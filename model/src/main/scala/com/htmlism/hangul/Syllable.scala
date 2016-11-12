@@ -7,5 +7,5 @@ sealed trait Syllable {
 
 case class TwoCharacterSyllable(initial: InitialConsonant, medial: Vowel) extends Syllable
 
-case class ThreeCharacterSyllable(initial: InitialConsonant, medial: Vowel, `final`: FinalConsonant) extends Syllable
+case class ThreeCharacterSyllable(initial: InitialConsonant, medial: Vowel, finalConsonant: FinalConsonant) extends Syllable
 
