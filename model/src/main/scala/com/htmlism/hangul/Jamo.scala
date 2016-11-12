@@ -6,13 +6,17 @@ sealed trait InitialConsonant extends Jamo
 
 sealed trait Vowel extends Jamo
 
+sealed trait FinalConsonant extends Jamo
+
+// =====================================
+
 sealed trait BasicVowel extends Vowel
 
-abstract class CompoundVowel(first: BasicVowel, second: BasicVowel) extends Vowel
+sealed abstract class CompoundVowel(first: BasicVowel, second: BasicVowel) extends Vowel
 
-abstract class IotizedVowel(from: BasicVowel) extends Vowel
+sealed abstract class IotizedVowel(from: BasicVowel) extends Vowel
 
-sealed trait FinalConsonant extends Jamo
+// =====================================
 
 sealed trait BasicFinalConsonant extends FinalConsonant
 
