@@ -14,7 +14,7 @@ abstract class IotizedVowel(from: BasicVowel) extends Vowel
 
 sealed trait FinalConsonant extends Jamo
 
-trait BasicFinalConsonant extends FinalConsonant
+sealed trait BasicFinalConsonant extends FinalConsonant
 
 trait ConsonantCluster extends FinalConsonant {
   def first: BasicFinalConsonant
