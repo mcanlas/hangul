@@ -31,6 +31,8 @@ sealed trait ConsonantCluster extends FinalConsonant {
 sealed class LeftBiasCluster(val left: BasicFinalConsonant, val right: BasicFinalConsonant) extends ConsonantCluster
 sealed class RightBiasCluster(val left: BasicFinalConsonant, val right: BasicFinalConsonant) extends ConsonantCluster
 
+// =====================================
+
 case object Kiyeok      extends InitialConsonant with BasicFinalConsonant
 case object SsangKiyeok extends InitialConsonant with BasicFinalConsonant
 case object Nieun       extends InitialConsonant with BasicFinalConsonant
