@@ -1,8 +1,8 @@
 package com.htmlism.hangul
 
-object Main extends App {
-  import com.htmlism.hangul.Hangul._
+import com.htmlism.hangul.Hangul._
 
+object Main extends App {
   // optional final constant makes 28
   // 19 * 21 * 28 = 11,172
 
@@ -22,8 +22,6 @@ object Main extends App {
 }
 
 object TwoCharacterSyllables extends App {
-  import com.htmlism.hangul.Hangul._
-
   for (c <- 0 until initialConsonantsTotal) {
     val syllables = (0 until vowelsTotal)
       .map { v => syllableOrigin +
@@ -38,8 +36,6 @@ object TwoCharacterSyllables extends App {
 }
 
 object ThreeCharacterSyllables extends App {
-  import com.htmlism.hangul.Hangul._
-
   for (c <- 0 until initialConsonantsTotal) {
     for (v <- 0 until vowelsTotal) {
       val syllables = (0 until finalConsonantsWithOptionTotal)
