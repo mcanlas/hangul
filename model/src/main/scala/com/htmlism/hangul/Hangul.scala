@@ -90,6 +90,7 @@ object Hangul {
   val totalCombinations = initialConsonantsTotal * vowelsTotal * finalConsonantsWithOptionTotal
 
   val syllableOrigin = 0xAC00
+  val lastSyllable = syllableOrigin + (initialConsonantsTotal * vowelsTotal * finalConsonantsWithOptionTotal) - 1
 
   def toSyllable(char: Char): Option[Syllable] =
     if (char < syllableOrigin || char >=  syllableOrigin + totalCombinations)
