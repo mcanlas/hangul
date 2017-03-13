@@ -11,7 +11,7 @@ lazy val model = project
   .settings(commonSettings: _*)
   .settings(
     name := "hangul-model",
-    libraryDependencies += "org.specs2" %% "specs2-core" % "3.8.8" % "test",
+    libraryDependencies += "org.specs2" %% "specs2-core" % "3.8.9" % "test",
     initialCommands in console := "import com.htmlism.hangul._")
 
 lazy val print = (project in file("print-characters"))
