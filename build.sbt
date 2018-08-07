@@ -1,6 +1,6 @@
 val commonSettings = Seq(
   scalaVersion := "2.12.6",
-  crossScalaVersions := Seq("2.10.7", "2.11.12", "2.12.6"),
+  crossScalaVersions := Seq("2.11.12", "2.12.6"),
   organization := "com.htmlism")
 
 lazy val root = (project in file ("."))
@@ -11,7 +11,7 @@ lazy val model = project
   .settings(commonSettings: _*)
   .settings(
     name := "hangul-model",
-    libraryDependencies += "org.specs2" %% "specs2-core" % "3.9.5" % "test",
+    libraryDependencies += "org.specs2" %% "specs2-core" % "4.3.2" % "test",
     initialCommands in console := "import com.htmlism.hangul._")
 
 lazy val print = (project in file("print-characters"))
