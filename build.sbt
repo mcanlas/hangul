@@ -1,10 +1,9 @@
-val commonSettings = Seq(
-  scalafmtOnCompile := true,
-  scalaVersion := "2.12.6",
-  crossScalaVersions := Seq("2.11.12", "2.12.6"),
-  organization := "com.htmlism")
+val commonSettings = Seq(scalafmtOnCompile := true,
+                         scalaVersion := "2.12.6",
+                         crossScalaVersions := Seq("2.11.12", "2.12.6"),
+                         organization := "com.htmlism")
 
-lazy val root = (project in file ("."))
+lazy val root = (project in file("."))
   .aggregate(model, print)
   .settings(commonSettings: _*)
 
