@@ -5,26 +5,25 @@ object Hangul {
   val medialOriginCodePoint  = 0x1161
   val finalOriginCodePoint   = 0x11A8
 
-  val initialConsonants = Seq(
-    Kiyeok,
-    SsangKiyeok,
-    Nieun,
-    Tikeut,
-    SsangTikeut,
-    Rieul,
-    Mieum,
-    Pieup,
-    SsangPieup,
-    Sios,
-    SsangSios,
-    Ieung,
-    Cieuc,
-    SsangCieuc,
-    Chiuech,
-    Khieukh,
-    Thieuth,
-    Phieuph,
-    Hieuh)
+  val initialConsonants = Seq(Kiyeok,
+                              SsangKiyeok,
+                              Nieun,
+                              Tikeut,
+                              SsangTikeut,
+                              Rieul,
+                              Mieum,
+                              Pieup,
+                              SsangPieup,
+                              Sios,
+                              SsangSios,
+                              Ieung,
+                              Cieuc,
+                              SsangCieuc,
+                              Chiuech,
+                              Khieukh,
+                              Thieuth,
+                              Phieuph,
+                              Hieuh)
 
   val vowels = Seq(
     VowelA,
@@ -47,7 +46,8 @@ object Hangul {
     VowelYu,
     VowelEu,
     VowelYi,
-    VowelI)
+    VowelI
+  )
 
   val finalConsonants = Seq(
     Kiyeok,
@@ -76,11 +76,12 @@ object Hangul {
     Khieukh,
     Thieuth,
     Phieuph,
-    Hieuh)
+    Hieuh
+  )
 
-  val initialConsonantsTotal = 19
-  val vowelsTotal = 21
-  val finalConsonantsTotal = 27
+  val initialConsonantsTotal         = 19
+  val vowelsTotal                    = 21
+  val finalConsonantsTotal           = 27
   val finalConsonantsWithOptionTotal = finalConsonants.length + 1
 
   assert(initialConsonantsTotal == initialConsonants.length)
@@ -90,22 +91,22 @@ object Hangul {
   val totalCombinations = initialConsonantsTotal * vowelsTotal * finalConsonantsWithOptionTotal
 
   val syllableOrigin = 0xAC00
-  val lastSyllable = syllableOrigin + (initialConsonantsTotal * vowelsTotal * finalConsonantsWithOptionTotal) - 1
+  val lastSyllable   = syllableOrigin + (initialConsonantsTotal * vowelsTotal * finalConsonantsWithOptionTotal) - 1
 
   def toSyllable(char: Char): Option[Syllable] =
-    if (char < syllableOrigin || char >=  syllableOrigin + totalCombinations)
+    if (char < syllableOrigin || char >= syllableOrigin + totalCombinations)
       None
     else {
       val syllableIndex = char - syllableOrigin
 
-      val initialIndex = syllableIndex / (vowelsTotal * finalConsonantsWithOptionTotal)
+      val initialIndex          = syllableIndex / (vowelsTotal * finalConsonantsWithOptionTotal)
       val remainingVowelBatchim = syllableIndex - (initialIndex * vowelsTotal * finalConsonantsWithOptionTotal)
 
       val medialIndex = remainingVowelBatchim / finalConsonantsWithOptionTotal
-      val finalIndex = remainingVowelBatchim - medialIndex * finalConsonantsWithOptionTotal
+      val finalIndex  = remainingVowelBatchim - medialIndex * finalConsonantsWithOptionTotal
 
       val initial = initialConsonants(initialIndex)
-      val medial = vowels(medialIndex)
+      val medial  = vowels(medialIndex)
 
       if (finalIndex == 0)
         Some(TwoCharacterSyllable(initial, medial))

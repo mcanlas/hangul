@@ -5,7 +5,10 @@ sealed trait Syllable {
   def medial: Vowel
 }
 
-case class TwoCharacterSyllable(initial: InitialConsonant, medial: Vowel) extends Syllable
+case class TwoCharacterSyllable(initial: InitialConsonant, medial: Vowel)
+    extends Syllable
 
-case class ThreeCharacterSyllable(initial: InitialConsonant, medial: Vowel, finalConsonant: FinalConsonant) extends Syllable
-
+case class ThreeCharacterSyllable(initial: InitialConsonant,
+                                  medial: Vowel,
+                                  finalConsonant: FinalConsonant)
+    extends Syllable

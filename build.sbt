@@ -1,4 +1,5 @@
 val commonSettings = Seq(
+  scalafmtOnCompile := true,
   scalaVersion := "2.12.6",
   crossScalaVersions := Seq("2.11.12", "2.12.6"),
   organization := "com.htmlism")
@@ -17,5 +18,3 @@ lazy val model = project
 lazy val print = (project in file("print-characters"))
   .dependsOn(model)
   .settings(commonSettings: _*)
-
-scalafmtOnCompile := true

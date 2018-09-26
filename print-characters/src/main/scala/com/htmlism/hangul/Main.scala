@@ -6,7 +6,9 @@ object Main extends App {
   // optional final constant makes 28
   // 19 * 21 * 28 = 11,172
 
-  printJamo("Initial consonants", initialConsonantsTotal, initialOriginCodePoint)
+  printJamo("Initial consonants",
+            initialConsonantsTotal,
+            initialOriginCodePoint)
   printJamo("Vowels", vowelsTotal, medialOriginCodePoint)
   printJamo("Final consonants", finalConsonantsTotal, finalOriginCodePoint)
 
@@ -24,9 +26,10 @@ object Main extends App {
 object TwoCharacterSyllables extends App {
   for (c <- 0 until initialConsonantsTotal) {
     val syllables = (0 until vowelsTotal)
-      .map { v => syllableOrigin +
-        (c * vowelsTotal * finalConsonantsWithOptionTotal) +
-        (v * finalConsonantsWithOptionTotal)
+      .map { v =>
+        syllableOrigin +
+          (c * vowelsTotal * finalConsonantsWithOptionTotal) +
+          (v * finalConsonantsWithOptionTotal)
       }
       .map(_.toChar)
       .mkString(" ")
@@ -39,10 +42,11 @@ object ThreeCharacterSyllables extends App {
   for (c <- 0 until initialConsonantsTotal) {
     for (v <- 0 until vowelsTotal) {
       val syllables = (0 until finalConsonantsWithOptionTotal)
-        .map { cf => syllableOrigin +
-          (c * vowelsTotal * finalConsonantsWithOptionTotal) +
-          (v * finalConsonantsWithOptionTotal) +
-          cf
+        .map { cf =>
+          syllableOrigin +
+            (c * vowelsTotal * finalConsonantsWithOptionTotal) +
+            (v * finalConsonantsWithOptionTotal) +
+            cf
         }
         .map(_.toChar)
         .mkString(" ")

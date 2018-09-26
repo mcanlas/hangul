@@ -24,33 +24,34 @@ object OrderByComplexity {
     Phieuph     -> 4,
     Hieuh       -> 3,
     // vowels
-    VowelA      -> 1.5,
-    VowelAe     -> 2.5,
-    VowelYa     -> 2,
-    VowelYae    -> 3,
-    VowelEo     -> 1.5,
-    VowelE      -> 2.5,
-    VowelYeo    -> 2,
-    VowelYe     -> 3,
-    VowelO      -> 1.5,
-    VowelWa     -> 3,
-    VowelWae    -> 4,
-    VowelOe     -> 2.5,
-    VowelYo     -> 2,
-    VowelU      -> 1.5,
-    VowelWeo    -> 3,
-    VowelWe     -> 4,
-    VowelWi     -> 2.5,
-    VowelYu     -> 2,
-    VowelEu     -> 1,
-    VowelYi     -> 2,
-    VowelI      -> 1)
+    VowelA   -> 1.5,
+    VowelAe  -> 2.5,
+    VowelYa  -> 2,
+    VowelYae -> 3,
+    VowelEo  -> 1.5,
+    VowelE   -> 2.5,
+    VowelYeo -> 2,
+    VowelYe  -> 3,
+    VowelO   -> 1.5,
+    VowelWa  -> 3,
+    VowelWae -> 4,
+    VowelOe  -> 2.5,
+    VowelYo  -> 2,
+    VowelU   -> 1.5,
+    VowelWeo -> 3,
+    VowelWe  -> 4,
+    VowelWi  -> 2.5,
+    VowelYu  -> 2,
+    VowelEu  -> 1,
+    VowelYi  -> 2,
+    VowelI   -> 1
+  )
 
   def main(args: Array[String]): Unit = {
     val syllables = (syllableOrigin to lastSyllable)
       .map(_.toChar)
       .map { c =>
-        val s = toSyllable(c).get
+        val s       = toSyllable(c).get
         val complex = calculateComplexity(s)
 
         c -> complex
@@ -72,7 +73,8 @@ object OrderByComplexity {
           complexity(i) + complexity(m) + complexity(a)
 
         case a: ConsonantCluster =>
-          complexity(i) + complexity(m) + complexity(a.left) + complexity(a.right)
+          complexity(i) + complexity(m) + complexity(a.left) + complexity(
+            a.right)
       }
   }
 }
