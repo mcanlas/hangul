@@ -73,8 +73,7 @@ object OrderByComplexity {
           complexity(i) + complexity(m) + complexity(a)
 
         case a: ConsonantCluster =>
-          complexity(i) + complexity(m) + complexity(a.left) + complexity(
-            a.right)
+          complexity(i) + complexity(m) + complexity(a.left) + complexity(a.right)
       }
   }
 }

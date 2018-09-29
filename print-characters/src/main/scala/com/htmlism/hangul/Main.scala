@@ -6,9 +6,7 @@ object Main extends App {
   // optional final constant makes 28
   // 19 * 21 * 28 = 11,172
 
-  printJamo("Initial consonants",
-            initialConsonantsTotal,
-            initialOriginCodePoint)
+  printJamo("Initial consonants", initialConsonantsTotal, initialOriginCodePoint)
   printJamo("Vowels", vowelsTotal, medialOriginCodePoint)
   printJamo("Final consonants", finalConsonantsTotal, finalOriginCodePoint)
 

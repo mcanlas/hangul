@@ -1,9 +1,7 @@
 package com.htmlism.hangul
 
 object Romanizer {
-  def applyWhen(str: String,
-                filter: Char => Boolean,
-                romanize: String => String): String = {
+  def applyWhen(str: String, filter: Char => Boolean, romanize: String => String): String = {
     val res = new StringBuilder
     var acc = new StringBuilder
 

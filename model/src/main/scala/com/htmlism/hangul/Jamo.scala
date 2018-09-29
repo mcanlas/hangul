@@ -5,10 +5,9 @@ sealed trait InitialConsonant extends Jamo
 sealed trait Vowel            extends Jamo
 sealed trait FinalConsonant   extends Jamo
 
-sealed trait BasicVowel extends Vowel
-sealed abstract class CompoundVowel(first: BasicVowel, second: BasicVowel)
-    extends Vowel
-sealed abstract class IotizedVowel(from: BasicVowel) extends Vowel
+sealed trait BasicVowel                                                    extends Vowel
+sealed abstract class CompoundVowel(first: BasicVowel, second: BasicVowel) extends Vowel
+sealed abstract class IotizedVowel(from: BasicVowel)                       extends Vowel
 
 sealed trait BasicFinalConsonant extends FinalConsonant
 
@@ -20,12 +19,8 @@ sealed trait ConsonantCluster extends FinalConsonant {
 // these two classes cannot be case classes since they are to be extended by case objects
 // and scala cannot support case to case inheritance
 
-sealed class LeftBiasCluster(val left: BasicFinalConsonant,
-                             val right: BasicFinalConsonant)
-    extends ConsonantCluster
-sealed class RightBiasCluster(val left: BasicFinalConsonant,
-                              val right: BasicFinalConsonant)
-    extends ConsonantCluster
+sealed class LeftBiasCluster(val left: BasicFinalConsonant, val right: BasicFinalConsonant)  extends ConsonantCluster
+sealed class RightBiasCluster(val left: BasicFinalConsonant, val right: BasicFinalConsonant) extends ConsonantCluster
 
 // =====================================
 
