@@ -9,7 +9,7 @@ sealed trait BasicVowel extends Vowel
 
 sealed abstract class CompoundVowel(first: BasicVowel, second: BasicVowel) extends Vowel {
   // evade spurious unused parameter warning in scala 2.12.8
-  private[this] lazy val _ = first + second.toString
+  private[this] lazy val _ = first.toString + second.toString
 }
 
 sealed abstract class IotizedVowel(from: BasicVowel) extends Vowel {
