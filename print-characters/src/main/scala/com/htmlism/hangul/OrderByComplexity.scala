@@ -63,17 +63,18 @@ object OrderByComplexity {
       .foreach(println)
   }
 
-  def calculateComplexity(s: Syllable) = s match {
-    case TwoCharacterSyllable(i, m) =>
-      complexity(i) + complexity(m)
+  def calculateComplexity(s: Syllable) =
+    s match {
+      case TwoCharacterSyllable(i, m) =>
+        complexity(i) + complexity(m)
 
-    case ThreeCharacterSyllable(i, m, f) =>
-      f match {
-        case a: BasicFinalConsonant =>
-          complexity(i) + complexity(m) + complexity(a)
+      case ThreeCharacterSyllable(i, m, f) =>
+        f match {
+          case a: BasicFinalConsonant =>
+            complexity(i) + complexity(m) + complexity(a)
 
-        case a: ConsonantCluster =>
-          complexity(i) + complexity(m) + complexity(a.left) + complexity(a.right)
-      }
-  }
+          case a: ConsonantCluster =>
+            complexity(i) + complexity(m) + complexity(a.left) + complexity(a.right)
+        }
+    }
 }

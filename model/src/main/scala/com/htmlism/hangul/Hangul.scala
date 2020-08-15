@@ -3,7 +3,7 @@ package com.htmlism.hangul
 object Hangul {
   val initialOriginCodePoint = 0x1100
   val medialOriginCodePoint  = 0x1161
-  val finalOriginCodePoint   = 0x11A8
+  val finalOriginCodePoint   = 0x11a8
 
   val initialConsonants = Seq(
     Kiyeok,
@@ -92,7 +92,7 @@ object Hangul {
 
   val totalCombinations = initialConsonantsTotal * vowelsTotal * finalConsonantsWithOptionTotal
 
-  val syllableOrigin = 0xAC00
+  val syllableOrigin = 0xac00
   val lastSyllable   = syllableOrigin + (initialConsonantsTotal * vowelsTotal * finalConsonantsWithOptionTotal) - 1
 
   def toSyllable(char: Char): Option[Syllable] =
