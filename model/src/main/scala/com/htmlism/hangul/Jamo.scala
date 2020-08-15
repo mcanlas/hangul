@@ -7,15 +7,9 @@ sealed trait FinalConsonant   extends Jamo
 
 sealed trait BasicVowel extends Vowel
 
-sealed abstract class CompoundVowel(first: BasicVowel, second: BasicVowel) extends Vowel {
-  // evade spurious unused parameter warning in scala 2.12.8
-  private[this] lazy val _ = first.toString + second.toString
-}
+sealed abstract class CompoundVowel(val first: BasicVowel, val second: BasicVowel) extends Vowel
 
-sealed abstract class IotizedVowel(from: BasicVowel) extends Vowel {
-  // evade spurious unused parameter warning in scala 2.12.8
-  private[this] lazy val _ = from
-}
+sealed abstract class IotizedVowel(val from: BasicVowel) extends Vowel
 
 sealed trait BasicFinalConsonant extends FinalConsonant
 
