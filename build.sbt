@@ -1,7 +1,7 @@
 val commonSettings = Seq(
   scalafmtOnCompile := true,
-  scalaVersion := "2.13.5",
-  crossScalaVersions := Seq("2.11.12", "2.12.13", "2.13.5"),
+  scalaVersion := "2.13.6",
+  crossScalaVersions := Seq("2.11.12", "2.12.13", "2.13.6"),
   organization := "com.htmlism"
 )
 
