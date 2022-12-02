@@ -2,8 +2,8 @@ package com.htmlism.hangul
 
 object Hangul {
   val initialOriginCodePoint = 0x1100
-  val medialOriginCodePoint = 0x1161
-  val finalOriginCodePoint = 0x11a8
+  val medialOriginCodePoint  = 0x1161
+  val finalOriginCodePoint   = 0x11a8
 
   val initialConsonants = Seq(
     Kiyeok,
@@ -81,9 +81,9 @@ object Hangul {
     Hieuh
   )
 
-  val initialConsonantsTotal = 19
-  val vowelsTotal = 21
-  val finalConsonantsTotal = 27
+  val initialConsonantsTotal         = 19
+  val vowelsTotal                    = 21
+  val finalConsonantsTotal           = 27
   val finalConsonantsWithOptionTotal = finalConsonants.length + 1
 
   assert(initialConsonantsTotal == initialConsonants.length)
@@ -93,7 +93,7 @@ object Hangul {
   val totalCombinations = initialConsonantsTotal * vowelsTotal * finalConsonantsWithOptionTotal
 
   val syllableOrigin = 0xac00
-  val lastSyllable = syllableOrigin + (initialConsonantsTotal * vowelsTotal * finalConsonantsWithOptionTotal) - 1
+  val lastSyllable   = syllableOrigin + (initialConsonantsTotal * vowelsTotal * finalConsonantsWithOptionTotal) - 1
 
   def toSyllable(char: Char): Option[Syllable] =
     if (char < syllableOrigin || char >= syllableOrigin + totalCombinations)
@@ -101,14 +101,14 @@ object Hangul {
     else {
       val syllableIndex = char - syllableOrigin
 
-      val initialIndex = syllableIndex / (vowelsTotal * finalConsonantsWithOptionTotal)
+      val initialIndex          = syllableIndex / (vowelsTotal * finalConsonantsWithOptionTotal)
       val remainingVowelBatchim = syllableIndex - (initialIndex * vowelsTotal * finalConsonantsWithOptionTotal)
 
       val medialIndex = remainingVowelBatchim / finalConsonantsWithOptionTotal
-      val finalIndex = remainingVowelBatchim - medialIndex * finalConsonantsWithOptionTotal
+      val finalIndex  = remainingVowelBatchim - medialIndex * finalConsonantsWithOptionTotal
 
       val initial = initialConsonants(initialIndex)
-      val medial = vowels(medialIndex)
+      val medial  = vowels(medialIndex)
 
       if (finalIndex == 0)
         Some(TwoCharacterSyllable(initial, medial))
