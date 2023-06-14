@@ -1,7 +1,5 @@
 val commonSettings = Seq(
-  scalaVersion       := "2.13.11",
-  crossScalaVersions := Seq("2.11.12", "2.12.18", "2.13.11"),
-  organization       := "com.htmlism"
+  organization := "com.htmlism"
 )
 
 lazy val root = (project in file("."))
