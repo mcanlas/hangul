@@ -1,5 +1,6 @@
 lazy val root = (project in file("."))
   .aggregate(model, print)
+  .disablePublishing
 
 lazy val model = project
   .settings(
@@ -10,3 +11,4 @@ lazy val model = project
 
 lazy val print = (project in file("print-characters"))
   .dependsOn(model)
+  .disablePublishing
