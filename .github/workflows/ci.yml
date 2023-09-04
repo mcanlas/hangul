@@ -5,11 +5,13 @@ on:
     branches: ['**']
 
 jobs:
-  lint-and-test:
-    name: Unit test
+  lint-test-and-publish:
+    name: Unit test and publish
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: '0'
 
       - uses: actions/setup-java@v3
         with:
@@ -20,3 +22,7 @@ jobs:
       - run: sbt 'scalafixAll --check' scalafmtSbtCheck scalafmtCheck
 
       - run: sbt +test
+
+      - run: sbt +publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.WRITE_PACKAGES_TOKEN }}
