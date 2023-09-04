@@ -3,6 +3,7 @@ lazy val root = (project in file("."))
   .disablePublishing
 
 lazy val model = project
+  .settings(description := "A Scala data model for the Korean alphabet")
   .settings(
     name                      := "hangul-model",
     console / initialCommands := "import com.htmlism.hangul._"
