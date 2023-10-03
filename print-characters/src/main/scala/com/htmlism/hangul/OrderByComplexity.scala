@@ -1,6 +1,6 @@
 package com.htmlism.hangul
 
-import com.htmlism.hangul.Hangul._
+import com.htmlism.hangul.Hangul.*
 
 object OrderByComplexity {
   val complexity = Map[Jamo, Int](

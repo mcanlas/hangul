@@ -1,6 +1,6 @@
 package com.htmlism.hangul
 
-import weaver._
+import weaver.*
 
 object HangulSpec extends FunSuite {
   test("The Hangul decoder should convert characters correctly") {
