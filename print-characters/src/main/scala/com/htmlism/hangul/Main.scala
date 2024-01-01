@@ -10,7 +10,7 @@ object Main extends App {
   printJamo("Vowels", vowelsTotal, medialOriginCodePoint)
   printJamo("Final consonants", finalConsonantsTotal, finalOriginCodePoint)
 
-  private[this] def printJamo(heading: String, total: Int, origin: Int) = {
+  private def printJamo(heading: String, total: Int, origin: Int) = {
     val jamo = (0 until total)
       .map(_ + origin)
       .map(_.toChar)
