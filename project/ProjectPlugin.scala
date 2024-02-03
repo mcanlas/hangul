@@ -27,7 +27,7 @@ object ProjectPlugin extends AutoPlugin {
     implicit class ProjectOps(p: Project) {
       def withTesting: Project = {
         val weaverVersion =
-          "0.8.3"
+          "0.8.4"
 
         p.settings(
           libraryDependencies ++= Seq(
