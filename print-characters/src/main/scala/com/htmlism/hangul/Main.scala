@@ -37,7 +37,7 @@ object TwoCharacterSyllables extends App {
 }
 
 object ThreeCharacterSyllables extends App {
-  for (c <- 0 until initialConsonantsTotal) {
+  for (c <- 0 until initialConsonantsTotal)
     for (v <- 0 until vowelsTotal) {
       val syllables = (0 until finalConsonantsWithOptionTotal)
         .map { cf =>
@@ -51,5 +51,4 @@ object ThreeCharacterSyllables extends App {
 
       println(syllables)
     }
-  }
 }
