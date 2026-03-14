@@ -23,18 +23,5 @@ object ProjectPlugin extends AutoPlugin {
     def module(s: String): Project =
       Project(s, file(jarName(s)))
         .settings(name := jarName(s))
-
-    implicit class ProjectOps(p: Project) {
-      def withTesting: Project = {
-        val weaverVersion =
-          "0.8.4"
-
-        p.settings(
-          libraryDependencies ++= Seq(
-            "com.disneystreaming" %% "weaver-cats" % weaverVersion % Test
-          )
-        )
-      }
-    }
   }
 }
