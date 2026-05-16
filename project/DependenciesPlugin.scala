@@ -7,12 +7,9 @@ object DependenciesPlugin extends AutoPlugin {
   object autoImport {
     implicit class DependencyOps(p: Project) {
       def withTesting: Project = {
-        val weaverVersion =
-          "0.8.4"
-
         p.settings(
           libraryDependencies ++= Seq(
-            "com.disneystreaming" %% "weaver-cats" % weaverVersion % Test
+            "org.typelevel" %% "weaver-cats" % Versions.weaver % Test
           )
         )
       }
