@@ -5,7 +5,7 @@ object Hangul {
   val medialOriginCodePoint  = 0x1161
   val finalOriginCodePoint   = 0x11a8
 
-  val initialConsonants = Seq(
+  val initialConsonants = Seq[InitialConsonant](
     Kiyeok,
     SsangKiyeok,
     Nieun,
@@ -27,7 +27,7 @@ object Hangul {
     Hieuh
   )
 
-  val vowels = Seq(
+  val vowels = Seq[Vowel](
     VowelA,
     VowelAe,
     VowelYa,
@@ -51,7 +51,7 @@ object Hangul {
     VowelI
   )
 
-  val finalConsonants = Seq(
+  val finalConsonants = Seq[FinalConsonant](
     Kiyeok,
     SsangKiyeok,
     KiyeokSios,
