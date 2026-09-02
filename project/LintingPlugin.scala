@@ -16,7 +16,7 @@ object LintingPlugin extends AutoPlugin {
 
   override val buildSettings =
     Seq(
-      tpolecatExcludeOptions += ScalacOptions.fatalWarnings,
+      tpolecatExcludeOptions ++= ScalacOptions.fatalWarningOptions,
       wartremoverWarnings ++= Warts.unsafe diff List(Wart.Any),
       semanticdbEnabled := true,
       semanticdbVersion := scalafixSemanticdb.revision

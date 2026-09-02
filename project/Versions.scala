@@ -1,3 +1,4 @@
 object Versions {
-  val weaver = "0.13.0"
+  val catsCore = "2.13.0"
+  val weaver   = "0.13.0"
 }

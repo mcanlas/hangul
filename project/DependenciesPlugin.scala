@@ -6,13 +6,15 @@ object DependenciesPlugin extends AutoPlugin {
 
   object autoImport {
     implicit class DependencyOps(p: Project) {
-      def withTesting: Project = {
+      def withCats: Project =
+        p.settings(libraryDependencies += "org.typelevel" %% "cats-core" % Versions.catsCore)
+
+      def withTesting: Project =
         p.settings(
           libraryDependencies ++= Seq(
             "org.typelevel" %% "weaver-cats" % Versions.weaver % Test
           )
         )
-      }
     }
   }
 }

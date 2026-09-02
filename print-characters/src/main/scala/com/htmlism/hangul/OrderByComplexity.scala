@@ -48,22 +48,27 @@ object OrderByComplexity {
   )
 
   def main(args: Array[String]): Unit = {
-    val syllables = (syllableOrigin to lastSyllable)
+    val syllablesByComplexity = (syllableOrigin to lastSyllable)
       .map(_.toChar)
       .map { c =>
-        val s       = toSyllable(c).get
-        val complex = calculateComplexity(s)
+        toSyllable(c) match {
+          case Some(s) =>
+            val complexityScore =
+              calculateComplexity(s)
 
-        c -> complex
+            c -> complexityScore
+          case None =>
+            s"Could not convert character $c to syllable" -> 0
+        }
       }
-      .toArray
+      .toList
       .sortBy(_._2)
 
-    syllables
+    syllablesByComplexity
       .foreach(println)
   }
 
-  def calculateComplexity(s: Syllable) =
+  private def calculateComplexity(s: Syllable) =
     s match {
       case TwoCharacterSyllable(i, m) =>
         complexity(i) + complexity(m)

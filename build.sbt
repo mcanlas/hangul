@@ -8,8 +8,10 @@ lazy val model = project
     name                      := "hangul-model",
     console / initialCommands := "import com.htmlism.hangul._"
   )
+  .withCats
   .withTesting
 
 lazy val print = (project in file("print-characters"))
   .dependsOn(model)
+  .withCats
   .disablePublishing
