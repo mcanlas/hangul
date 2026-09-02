@@ -1,4 +1,4 @@
-lazy val root = (project in file("."))
+lazy val root = Project("hangul", file("."))
   .aggregate(model, print)
   .disablePublishing
 
